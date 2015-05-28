@@ -1,0 +1,25 @@
+/*
+ * Copyright 2015 wesolutions GmbH
+ * Copyright 2014 Toradex AG
+ * Copyright 2012 Freescale Semiconductor, Inc.
+ * Copyright 2011 Linaro Ltd.
+ *
+ * The code contained herein is licensed under the GNU General Public
+ * License. You may obtain a copy of the GNU General Public License
+ * Version 2 or later at the following locations:
+ *
+ * http://www.opensource.org/licenses/gpl-license.html
+ * http://www.gnu.org/copyleft/gpl.html
+ */
+
+/dts-v1/;
+
+#include <dt-bindings/interrupt-controller/irq.h>
+#include "imx6q.dtsi"
+#include "imx6qdl-apalis-captivo.dtsi"
+#include "imx6qdl-captivo-picture.dtsi"
+
+/ {
+	model = "Captivo Picture based on Toradex Apalis iMX6Q";
+	compatible = "wesolutions,captivo_picture", "toradex,apalis_imx6q", "fsl,imx6q";
+};
