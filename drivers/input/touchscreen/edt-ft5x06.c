@@ -1,5 +1,6 @@
 /*
  * Copyright (C) 2012 Simon Budig, <simon.budig@kernelconcepts.de>
+ * Arnold Konrad <arnold@wesolutions.at> (DT size specification support)
  * Daniel Wagener <daniel.wagener@kernelconcepts.de> (M09 firmware support)
  * Lothar Waßmann <LW@KARO-electronics.de> (DT support)
  *
