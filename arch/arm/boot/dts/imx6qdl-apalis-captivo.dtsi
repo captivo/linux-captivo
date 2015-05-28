@@ -94,7 +94,7 @@
 		disp_dev = "hdmi";
 		interface_pix_fmt = "RGB24";
 		mode_str ="1920x1080M@60";
-		default_bpp = <16>;
+		default_bpp = <24>;
 		int_clk = <0>;
 		late_init = <0>;
 		status = "disabled";
@@ -506,7 +506,7 @@
 		};
 		pinctrl_apalis_gpio8: apalis_gpio8-1 {
 			fsl,pins = <
-				MX6QDL_PAD_GPIO_6__GPIO1_IO06		PAD_CTRL_HYS_PD	/* Apalis GPIO8 */
+				MX6QDL_PAD_GPIO_6__GPIO1_IO06		PAD_CTRL_HYS_PU	/* Apalis GPIO8 */
 			>;
 		};
 		pinctrl_audmux_mclk_1: audmux_mclk-1 {
