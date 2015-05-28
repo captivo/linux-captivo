@@ -35,6 +35,7 @@
 #include <linux/debugfs.h>
 #include <linux/slab.h>
 #include <linux/gpio.h>
+#include <linux/of.h>
 #include <linux/of_gpio.h>
 #include <linux/input/mt.h>
 #include <linux/input/edt-ft5x06.h>
@@ -963,6 +964,9 @@ static int edt_ft5x06_ts_probe(struct i2c_client *client,
 	struct input_dev *input;
 	int error;
 	char fw_version[EDT_NAME_LEN];
+	uint32_t max_x = 1024;
+	uint32_t max_y = 768;
+	struct device_node *np = NULL;
 
 	dev_dbg(&client->dev, "probing for EDT FT5x06 I2C\n");
 
@@ -1038,12 +1042,19 @@ static int edt_ft5x06_ts_probe(struct i2c_client *client,
 	__set_bit(EV_KEY, input->evbit);
 	__set_bit(EV_ABS, input->evbit);
 	__set_bit(BTN_TOUCH, input->keybit);
-	input_set_abs_params(input, ABS_X, 0, tsdata->num_x * 64 - 1, 0, 0);
-	input_set_abs_params(input, ABS_Y, 0, tsdata->num_y * 64 - 1, 0, 0);
-	input_set_abs_params(input, ABS_MT_POSITION_X,
-			     0, tsdata->num_x * 64 - 1, 0, 0);
-	input_set_abs_params(input, ABS_MT_POSITION_Y,
-			     0, tsdata->num_y * 64 - 1, 0, 0);
+ 
+	np = input->dev.parent->of_node;
+	of_property_read_u32(np, "touchscreen-size-x", &max_x);
+	of_property_read_u32(np, "touchscreen-size-y", &max_y);
+	
+	dev_dbg(&client->dev,
+		"EDT FT5x06 setting touch dimensions to %dx%d",
+		max_x, max_y);
+
+	input_set_abs_params(input, ABS_X, 0, max_x, 0, 0);
+	input_set_abs_params(input, ABS_Y, 0, max_y, 0, 0);
+	input_set_abs_params(input, ABS_MT_POSITION_X, 0, max_x, 0, 0);
+	input_set_abs_params(input, ABS_MT_POSITION_Y, 0, max_y, 0, 0);
 	error = input_mt_init_slots(input, MAX_SUPPORT_POINTS, 0);
 	if (error) {
 		dev_err(&client->dev, "Unable to init MT slots.\n");
