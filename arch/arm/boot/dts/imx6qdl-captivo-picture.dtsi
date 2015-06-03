@@ -153,18 +153,14 @@
 &i2c1 {
 	status = "okay";
 
-	edt-ft5306@38 {
-		status = "okay";
-		compatible = "edt,edt-ft5306", "edt,edt-ft5x06";
+	ft5x06_ts@38 {
+		compatible = "ft5x06-ts,ft5x06-ts";
 		pinctrl-names = "default";
 		pinctrl-0 = <&pinctrl_apalis_gpio8>;
-
 		reg = <0x38>;
 		interrupt-parent = <&gpio1>;
 		interrupts = <6 2>;
-        
-		touchscreen-size-x = <800>;
-		touchscreen-size-y = <480>;
+		wakeup-gpios = <&gpio1 6 0>;
 	};
 
 	pcie-switch@58 {
