@@ -93,9 +93,8 @@
 	default-brightness-level = <6>;
 #else
 	/* PWM polarity: 0 is brightest */
-	brightness-levels = <0 15 30 45 60 75 90 105 120 135 
-			150 165 180 195 210 225 240 255>;
-	default-brightness-level = <6>;
+	brightness-levels =  <0 1 2 3 5 7 10 15 22 31 44 63 90 127 180 255>;
+	default-brightness-level = <14>;
 #endif
 	status = "okay";
 };
