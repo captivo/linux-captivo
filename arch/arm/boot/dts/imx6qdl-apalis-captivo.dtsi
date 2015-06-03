@@ -23,7 +23,7 @@
 
 	backlight: backlight {
 		compatible = "pwm-backlight";
-		pwms = <&pwm4 0 5000000>;
+		pwms = <&pwm4 0 1000000>;
 		status = "disabled";
 	};
 
