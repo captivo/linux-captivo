@@ -161,6 +161,11 @@
 		interrupts = <6 2>;
 		wakeup-gpios = <&gpio1 6 0>;
 	};
+        
+        adt7475@2e {
+		compatible = "adi,adt7475";
+		reg = <0x2e>;
+	};
 
 	pcie-switch@58 {
 		compatible = "plx,pex8605";
